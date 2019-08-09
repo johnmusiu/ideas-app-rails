@@ -12,6 +12,7 @@ class IdeasControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new" do
     get new_idea_url
+    byebug
     assert_response :success
   end
 
