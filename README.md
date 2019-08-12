@@ -1,24 +1,20 @@
-# README
+# TODOs Rails App
+[![Build Status](https://travis-ci.com/johnmusiu/ideas-app-rails.svg?branch=master)](https://travis-ci.com/johnmusiu/ideas-app-rails)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e6c911dd8411e048394b/test_coverage)](https://codeclimate.com/github/johnmusiu/ideas-app-rails/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e6c911dd8411e048394b/maintainability)](https://codeclimate.com/github/johnmusiu/ideas-app-rails/maintainability)
+##### Ruby version
+2.3.6
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### System dependencies
 
-Things you may want to cover:
+##### Configuration
 
-* Ruby version
+##### Database creation
 
-* System dependencies
+##### Database initialization
 
-* Configuration
+##### How to run the test suite
 
-* Database creation
+##### Services (job queues, cache servers, search engines, etc.)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##### Deployment instructions
