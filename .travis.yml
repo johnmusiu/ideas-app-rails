@@ -1,27 +1,29 @@
-addons:
-  postgresql: 9.6
-  code_climate:
-    repo_token: d6e63c6c5c8c17b7d7ccbd78798ac3d0681e06f0
+dist: trusty
+language: ruby
+rvm:
+  - 2.3.7
 
-after_success:
-  - bundle exec codeclimate-test-reporter
+env:
+  global:
+    - CC_TEST_REPORTER_ID=8889080ae5bbf1a42481aae9fbf7d090267915ee714a77499d84e17d246b698e
+
+addons:
+  - postgresql: 9.6
 
 before_script:
   - psql -c 'create database test;' -U postgres
-
-dist: trusty
-language: ruby
-
-rvm:
-  - 2.3.7
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 script:
   - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rspec
 
-env:
-  global:
-    secure: BSWCpADZLRb9u5B9qOJRGMd9JuTQO9xJQ26COd88Q5U5Ll9OXq4faVVybh07W3f1zf68GKfKgpWWIb6nUo1AK9VT5R4+8VyX88Gn+0sZfD/llgm+84XK0sPfArM1NRZcXnqLxNfrrNk0rtrHGELtz1LowlnximVxbgI8pMjqDvzPCUjg6czW8RVzWIfsRWgerTJswW0jDg5nztv3nD/ynu6NfSJkbBIy1lMmpYyNcKMvmdz8m3ozDtB7Ek7jXmmnGy0WbL+GVJv4h0dK3E+Dl9DbgbPS+WE10weV9NW4C8OLkrwR25K2Xz+Fy4tACYoBAEZDjEzoVZUNlzjN514O2seL5vCgFtz/FqehhWzjF5Cq3mfhdLwsnlj1ZRl8lhOwud0hjFqdS6ABfJ1zOffU2h6JVnjEEtlCdFP05C4cilhKv77WO9S67v4+h81XnWYa4AIudH1pQHt8YG66a17fJ7olWnXsbyy/q15gIdbrQf8mgRPQt3JEyRdFv7LGv1fbx4zcdhPQ4oiwHT88xMwY2DBSISrhWg01nvq/CA2pwvspTA1eFg1/u7Vj25esWt9RzUJaD/q1bxOrOsJSYEOqLk2aFL7GZ/+OyNZaEvcvzi3ZY7ld2nODlOoCrDP5R6GmWTX1agerZ/3DZtLQ9M/bwN2Un5GZoJchF329zKynrtM=
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
 #deploy:
 #  provider: heroku
 #  api_key:

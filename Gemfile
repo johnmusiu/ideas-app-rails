@@ -31,7 +31,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise', '>= 4.6.0'
 gem "actionview", ">= 5.0.7.2"
-
+gem 'rubocop', '~> 0.74.0', require: false
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -54,6 +54,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # gem 'sqlite3'
+end
+
+group :test do
+  gem 'simplecov', require: false
 end
 
 # group :production do
