@@ -5,7 +5,7 @@ rvm:
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=8889080ae5bbf1a42481aae9fbf7d090267915ee714a77499d84e17d246b698e
+    - CC_TEST_REPORTER_ID=1139a02e644d193832bd282b27bdb8750dbdeb939bd92a71f7fa5f72e756a2db
 
 addons:
   - postgresql: 9.6
@@ -29,8 +29,7 @@ script:
 
 
 after_script:
-  - ./cc-test-reporter format-coverage -t simplecov -o coverage/.resultset.json # Format backend coverage
-  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi  # Upload coverage/codeclimate.json
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 #deploy:
 #  provider: heroku
